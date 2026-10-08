@@ -276,12 +276,20 @@ nav a.ativo{border-color:var(--dourado)}
 .blog-head h2{font-size:clamp(1.9rem,3.2vw,2.6rem)}
 .blog-head p{font-size:1.1rem;max-width:42ch}
 .blog-lista{display:grid;grid-template-columns:repeat(3,1fr);gap:0 56px}
-.post{position:relative;border-top:1px solid rgba(11,37,86,.28);padding:26px 0 40px}
+.blog-filtros{display:flex;flex-wrap:wrap;gap:10px;margin:-20px 0 40px}
+.blog-filtros button{font:inherit;font-size:.95rem;cursor:pointer;padding:8px 18px;border:1px solid rgba(11,37,86,.28);background:#fff;color:var(--azul);border-radius:999px;transition:background .2s,color .2s}
+.blog-filtros button:hover{border-color:var(--dourado)}
+.blog-filtros button.ativo{background:var(--azul);color:#fff;border-color:var(--azul)}
+.post{position:relative;border-top:1px solid rgba(11,37,86,.28);padding:26px 0 40px;display:flex;flex-direction:column}
 .post::before{content:'';position:absolute;top:-1px;left:0;width:56px;height:3px;background:var(--dourado)}
-.post time{display:block;font-size:.92rem;color:var(--texto)}
+.post-img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;margin-bottom:16px;background:var(--linha)}
+.post-meta{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;font-size:.92rem;color:var(--texto)}
+.post-cat{font-size:.78rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--dourado)}
 .post h3{font-size:1.3rem;margin:6px 0 10px}
-.post summary{cursor:pointer;margin-top:14px;color:var(--azul);font-weight:600;text-decoration:underline;text-decoration-color:var(--dourado);text-underline-offset:4px}
-.post details p{margin-top:12px}
+.post h3 a{color:inherit;text-decoration:none}
+.post h3 a:hover{text-decoration:underline;text-decoration-color:var(--dourado);text-underline-offset:4px}
+.post-fonte{margin-top:auto;padding-top:14px;font-size:.88rem}
+.post-fonte a{color:var(--azul);font-weight:600;text-decoration:underline;text-decoration-color:var(--dourado);text-underline-offset:4px}
 .blog-vazio{grid-column:1/-1;padding:28px 0;border-top:1px solid rgba(11,37,86,.28);font-size:1.1rem}
 @media(max-width:1100px){nav ul{gap:22px}nav a{font-size:.95rem}}
 @media(max-width:960px){.blog-head{grid-template-columns:1fr;gap:16px}.blog-lista{grid-template-columns:1fr 1fr}}
@@ -699,7 +707,9 @@ nav a{font-size:.94rem;white-space:nowrap}
       <h2>Blog</h2>
       <p id="blogMes"></p>
     </div>
-    <div class="blog-lista" id="blogLista"></div>
+    <div class="blog-filtros" id="blogFiltros" role="group" aria-label="Filtrar por categoria"></div>
+    <div class="blog-lista" id="blogLista" aria-live="polite"></div>
+    <script type="application/json" id="noticiasInline">{"atualizado_em": "2026-10-08T23:55:00+00:00", "itens": [{"titulo": "Projeto Cartas 2026 incentiva autorregularização de declarações retidas em malha fiscal", "resumo": "Cartas estão sendo enviadas a contribuintes de todo o país cujas declarações de Imposto de Renda 2026 estão retidas em malha fiscal.", "data": "2026-10-06T12:00:00+00:00", "imagem": "", "url": "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/outubro/projeto-cartas-2026-incentiva-autorregularizacao-de-declaracoes-retidas-em-malha-fiscal", "fonte": "Receita Federal", "categorias": ["Imposto de Renda", "Impostos"]}, {"titulo": "Receita Federal atualiza o balanço de solicitações de opção pelo Simples Nacional e pelo regime regular do IBS e da CBS", "resumo": "Balanço reúne 452.598 solicitações pelo Simples Nacional e 846.339 pelo regime regular do IBS e da CBS.", "data": "2026-10-05T12:00:00+00:00", "imagem": "", "url": "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/outubro/receita-federal-atualiza-o-balanco-de-solicitacoes-de-opcao-pelo-simples-nacional-e-pelo-regime-regular-do-ibs-e-da-cbs-1", "fonte": "Receita Federal", "categorias": ["Simples Nacional", "Impostos"]}, {"titulo": "Receita Federal e PGFN abrem transação para débitos relacionados à multa substitutiva da pena de perdimento", "resumo": "Contribuintes podem obter descontos de até 65% e utilizar prejuízo fiscal", "data": "2026-10-05T12:00:00+00:00", "imagem": "", "url": "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/outubro/receita-federal-e-pgfn-abrem-transacao-para-debitos-relacionados-a-multa-substitutiva-da-pena-de-perdimento", "fonte": "Receita Federal", "categorias": ["Impostos"]}, {"titulo": "Simples Nacional 2027: Entenda os novos prazos e faça sua escolha com consciência e tranquilidade", "resumo": "Embora os períodos sejam parecidos, tratam de escolhas diferentes. Por isso, é importante entender cada situação.", "data": "2026-09-29T12:00:00+00:00", "imagem": "", "url": "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/setembro/simples-nacional-2027-entenda-os-novos-prazos-e-faca-sua-escolha-com-consciencia-e-tranquilidade", "fonte": "Receita Federal", "categorias": ["Simples Nacional"]}, {"titulo": "Opção pelo Simei permanece em janeiro", "resumo": "A alteração do prazo de opção para setembro aplica-se ao Simples Nacional, e não ao Simei.", "data": "2026-09-25T12:00:00+00:00", "imagem": "", "url": "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/setembro/opcao-pelo-simei-permanece-em-janeiro", "fonte": "Receita Federal", "categorias": ["MEI", "Simples Nacional"]}, {"titulo": "CGSN atualiza regras do Simples Nacional para adequação à Reforma Tributária do Consumo", "resumo": "Novas regras incorporam IBS e CBS ao regime, atualizam procedimentos e estabelecem novos prazos de opção para 2027", "data": "2026-08-11T12:00:00+00:00", "imagem": "", "url": "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/agosto/cgsn-atualiza-regras-do-simples-nacional-para-adequacao-a-reforma-tributaria-do-consumo", "fonte": "Receita Federal", "categorias": ["Simples Nacional", "Impostos"]}, {"titulo": "Emissão do CNPJ e de documentos fiscais por pessoas físicas contribuintes da CBS começará em 1º de janeiro de 2027", "resumo": "Decreto prorroga para 2027 a obrigatoriedade de inscrição no CNPJ e de emissão de documentos fiscais por pessoas físicas contribuintes da CBS, ampliando o prazo de adaptação à Reforma Tributária.", "data": "2026-07-22T17:02:38+00:00", "imagem": "", "url": "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/emissao-do-cnpj-e-de-documentos-fiscais-por-pessoas-fisicas-contribuintes-da-cbs-comecara-em-1o-de-janeiro-de-2027", "fonte": "Receita Federal", "categorias": ["CNPJ", "Impostos"]}, {"titulo": "Receita Federal disponibilizará a versão web da DITR 2026", "resumo": "Serviço permite preencher, transmitir, retificar e consultar a Declaração do Imposto sobre a Propriedade Territorial Rural de forma on-line.", "data": "2026-07-22T16:51:56+00:00", "imagem": "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/receita-federal-disponibilizara-a-versao-web-da-ditr-2026/imagem1.png/@@images/cb220658-bc95-4a84-8934-fe09a5b65d57.png", "url": "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/receita-federal-disponibilizara-a-versao-web-da-ditr-2026", "fonte": "Receita Federal", "categorias": ["Impostos"]}, {"titulo": "Receita Federal informa parada programada do Sistema de Leilão Eletrônico", "resumo": "Serviço ficará indisponível no dia 23 de julho de 2026, das 6h às 16h, para implantação do CNPJ Alfanumérico", "data": "2026-07-20T19:54:16+00:00", "imagem": "", "url": "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/receita-federal-informa-parada-programada-do-sistema-de-leilao-eletronico", "fonte": "Receita Federal", "categorias": ["CNPJ"]}]}</script>
   </div>
 </section>
 
@@ -855,48 +865,89 @@ const spy = new IntersectionObserver(es => es.forEach(e => {
   if (p) p[0].classList.toggle('ativo', e.isIntersecting);
 }), {rootMargin: '-45% 0px -50% 0px'});
 navLinks.forEach(p => spy.observe(p[1]));
-/* Blog: mostra só os artigos do mês atual e recomeça sozinho todo dia 1.
-   Para publicar, adicione um item em POSTS com mes 'AAAA-MM'. */
-const POSTS = [
-  {mes:'2026-09', dia:16, titulo:'Como escolher o regime tributário da sua empresa',
-   resumo:'MEI, Simples Nacional e Lucro Presumido seguem regras diferentes. Veja o que pesa na escolha.',
-   corpo:['MEI, Simples Nacional e Lucro Presumido têm regras, limites e custos diferentes. A escolha certa depende do faturamento, da atividade, da quantidade de funcionários e da margem de lucro do negócio.',
-          'Por isso, a decisão não deve ser tomada só pelo tamanho da alíquota. Um diagnóstico com o contador, considerando os números reais da empresa, mostra qual regime gera a menor carga tributária de forma legal.']},
-  {mes:'2026-09', dia:9, titulo:'Pró-labore e distribuição de lucros: qual é a diferença?',
-   resumo:'São duas formas de o sócio receber da empresa, cada uma com regras e tratamento próprios.',
-   corpo:['O pró-labore é a remuneração do sócio pelo trabalho que realiza na empresa e costuma ter incidência de encargos, como a contribuição previdenciária. Já a distribuição de lucros é a parte do resultado apurado que a empresa repassa aos sócios.',
-          'A forma correta de retirar valores depende do regime tributário e da escrituração da empresa. Antes de definir quanto retirar, converse com o seu contador para não misturar as finanças pessoais com as do negócio.']},
-  {mes:'2026-09', dia:2, titulo:'Como organizar os documentos do mês antes de enviar à contabilidade',
-   resumo:'Uma rotina simples evita retrabalho e erros no fechamento mensal.',
-   corpo:['Notas fiscais de entrada e saída, extratos bancários, comprovantes de pagamento e informações da folha são a base do fechamento contábil. Reuni-los em uma pasta digital, separados por mês, evita retrabalho e reduz o risco de erros na apuração dos impostos.',
-          'Um hábito ajuda: reservar 15 minutos por semana para guardar comprovantes e conferir se todas as vendas e despesas foram registradas. No fim do mês, o envio fica muito mais rápido.']}
-];
+/* Blog: notícias oficiais (Receita Federal / Governo Federal).
+   Os dados vêm de noticias.json, atualizado automaticamente pelo GitHub Actions
+   (scripts/atualizar_noticias.py) a partir dos feeds RSS oficiais do gov.br. */
 (function(){
-  const agora = new Date();
-  const chave = agora.getFullYear() + '-' + String(agora.getMonth() + 1).padStart(2, '0');
-  const nomeMes = agora.toLocaleDateString('pt-BR', {month: 'long'});
   const lista = document.getElementById('blogLista');
   const info = document.getElementById('blogMes');
-  if(!lista || !info) return;
+  const filtros = document.getElementById('blogFiltros');
+  if(!lista || !info || !filtros) return;
+  const CATS = ['Todas', 'MEI', 'CNPJ', 'Impostos', 'Imposto de Renda', 'Simples Nacional'];
+  let itens = [], atual = 'Todas';
   const el = (tag, cls, txt) => { const e = document.createElement(tag); if(cls) e.className = cls; if(txt) e.textContent = txt; return e; };
-  const posts = POSTS.filter(p => p.mes === chave).sort((a, b) => b.dia - a.dia);
-  if(!posts.length){
-    info.textContent = 'O blog recomeça a cada dia 1. Os artigos de ' + nomeMes + ' serão publicados em breve.';
-    lista.appendChild(el('p', 'blog-vazio', 'Ainda não há artigos em ' + nomeMes + '. Volte em breve.'));
-    return;
+  const seguro = u => /^https:\/\//i.test(u || '');
+  function desenhar(){
+    lista.textContent = '';
+    const vis = itens.filter(n => atual === 'Todas' || (n.categorias || []).includes(atual));
+    if(!vis.length){
+      lista.appendChild(el('p', 'blog-vazio', itens.length ? 'Nenhuma notícia nesta categoria no momento.' : 'As notícias oficiais aparecerão aqui em breve.'));
+      return;
+    }
+    vis.forEach(n => {
+      const art = el('article', 'post');
+      if(seguro(n.imagem)){
+        const img = el('img', 'post-img');
+        img.src = n.imagem; img.alt = ''; img.loading = 'lazy'; img.referrerPolicy = 'no-referrer';
+        img.onerror = () => img.remove();
+        art.appendChild(img);
+      }
+      const meta = el('div', 'post-meta');
+      const d = n.data ? new Date(n.data) : null;
+      if(d && !isNaN(d)){
+        const t = el('time', '', d.toLocaleDateString('pt-BR', {day: 'numeric', month: 'long', year: 'numeric'}));
+        t.dateTime = n.data; meta.appendChild(t);
+      }
+      if((n.categorias || [])[0]) meta.appendChild(el('span', 'post-cat', n.categorias[0]));
+      const h = el('h3');
+      if(seguro(n.url)){
+        const a = el('a', '', n.titulo); a.href = n.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; h.appendChild(a);
+      } else h.textContent = n.titulo;
+      art.append(meta, h);
+      if(n.resumo) art.appendChild(el('p', '', n.resumo));
+      if(seguro(n.url)){
+        const f = el('p', 'post-fonte');
+        f.append('Fonte: ' + (n.fonte || 'gov.br') + ' · ');
+        const a = el('a', '', 'Ler a notícia original'); a.href = n.url; a.target = '_blank'; a.rel = 'noopener noreferrer';
+        f.appendChild(a); art.appendChild(f);
+      }
+      lista.appendChild(art);
+    });
   }
-  info.textContent = 'Artigos de ' + nomeMes + '. O blog recomeça a cada dia 1.';
-  posts.forEach(p => {
-    const [ano, mes] = p.mes.split('-').map(Number);
-    const art = el('article', 'post');
-    const t = el('time', '', new Date(ano, mes - 1, p.dia).toLocaleDateString('pt-BR', {day: 'numeric', month: 'long'}));
-    art.append(t, el('h3', '', p.titulo), el('p', '', p.resumo));
-    const det = el('details');
-    det.append(el('summary', '', 'Ler artigo'));
-    p.corpo.forEach(par => det.appendChild(el('p', '', par)));
-    art.appendChild(det);
-    lista.appendChild(art);
+  CATS.forEach(c => {
+    const b = el('button', c === atual ? 'ativo' : '', c);
+    b.type = 'button';
+    b.setAttribute('aria-pressed', c === atual);
+    b.addEventListener('click', () => {
+      atual = c;
+      filtros.querySelectorAll('button').forEach(x => { const on = x.textContent === c; x.classList.toggle('ativo', on); x.setAttribute('aria-pressed', on); });
+      desenhar();
+    });
+    filtros.appendChild(b);
   });
+  info.textContent = 'Notícias oficiais da Receita Federal e do Governo Federal, atualizadas automaticamente.';
+  lista.appendChild(el('p', 'blog-vazio', 'Carregando notícias…'));
+  const base = info.textContent;
+  function aplicar(j){
+    itens = (j.itens || []).filter(n => n && n.titulo);
+    info.textContent = base;
+    if(j.atualizado_em){
+      const u = new Date(j.atualizado_em);
+      if(!isNaN(u)) info.textContent += ' Última verificação: ' + u.toLocaleDateString('pt-BR') + '.';
+    }
+    desenhar();
+  }
+  /* 1) mostra já as notícias embutidas no próprio arquivo */
+  let temInline = false;
+  try {
+    const bruto = document.getElementById('noticiasInline');
+    if(bruto){ const j = JSON.parse(bruto.textContent); if((j.itens || []).length){ aplicar(j); temInline = true; } }
+  } catch(e) {}
+  /* 2) se existir noticias.json (atualizado pelo GitHub Actions), usa a versão mais nova */
+  fetch('noticias.json', {cache: 'no-cache'})
+    .then(r => { if(!r.ok) throw new Error(r.status); return r.json(); })
+    .then(j => { if((j.itens || []).length || !temInline) aplicar(j); })
+    .catch(() => { if(!temInline){ lista.textContent = ''; lista.appendChild(el('p', 'blog-vazio', 'Não foi possível carregar as notícias agora. Tente novamente em instantes.')); } });
 })();
 /* Conversa do "Fale com um especialista" (estilo WhatsApp) */
 (function(){
