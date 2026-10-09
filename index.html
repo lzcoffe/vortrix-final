@@ -483,7 +483,7 @@ nav a{font-size:.94rem;white-space:nowrap}
   </div>
   <div class="hero-info">
     <div class="container">
-      <p><strong>Atendimento</strong>Segunda a sexta, das 8h às 18h</p>
+      <p><strong>Atendimento</strong>Segunda a sexta, das 9h às 18h</p>
       <p><strong>Quem atendemos</strong>MEI, Simples Nacional, Lucro Presumido e profissionais liberais</p>
       <p><strong>Retorno</strong>Em até 24h úteis, por WhatsApp ou e-mail</p>
     </div>
@@ -772,7 +772,7 @@ nav a{font-size:.94rem;white-space:nowrap}
       </div>
       <div class="info-linha">
         <span class="ic">IV.</span>
-        <div><strong>Horário</strong><span>Segunda a Sexta, das 8h às 18h</span></div>
+        <div><strong>Horário</strong><span>Segunda a Sexta, das 9h às 18h</span></div>
       </div>
       <a href="https://wa.me/5531973495330" class="btn" target="_blank" rel="noopener">Chamar no WhatsApp</a>
     </div>
@@ -820,13 +820,12 @@ nav a{font-size:.94rem;white-space:nowrap}
         <ul>
           <li>(31) 97349-5330</li>
           <li>contato@votrixcontabilidade.com.br</li>
-          <li>Seg. a Sex., 8h às 18h</li>
+          <li>Seg. a Sex., 9h às 18h</li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <span>© 2024 Votrix Contabilidade. Todos os direitos reservados.</span>
-      <span>CNPJ: 00.000.000/0001-00, CRC: XX-000000/O</span>
       <a href="#topo">Voltar ao topo</a>
     </div>
   </div>
@@ -859,6 +858,18 @@ closeMenu.addEventListener('click', ()=>{mobileNav.classList.remove('open');over
 overlayMenu.addEventListener('click', ()=>{mobileNav.classList.remove('open');overlayMenu.classList.remove('show');});
 document.querySelectorAll('.mobile-nav a').forEach(a=>a.addEventListener('click', ()=>{mobileNav.classList.remove('open');overlayMenu.classList.remove('show');}));
 
+/* Menu: rola até a seção sem acrescentar #identificador na URL */
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="#"]');
+  if(!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
+  const id = a.getAttribute('href').slice(1);
+  if(!id) return;
+  const alvo = document.getElementById(id);
+  if(!alvo) return;
+  e.preventDefault();
+  if(id === 'topo') window.scrollTo({top: 0});
+  else alvo.scrollIntoView();
+});
 const navLinks = [...document.querySelectorAll('nav a')].map(a => [a, document.querySelector(a.getAttribute('href'))]).filter(p => p[1]);
 const spy = new IntersectionObserver(es => es.forEach(e => {
   const p = navLinks.find(x => x[1] === e.target);
@@ -982,7 +993,7 @@ navLinks.forEach(p => spy.observe(p[1]));
   async function escolher(t){
     foot.innerHTML = ''; msg(t, 'out');
     await bot(['Perfeito! Um especialista da Votrix pode te atender sobre isso.',
-               'Atendemos de segunda a sexta, das 8h às 18h. Você pode continuar a conversa direto pelo nosso WhatsApp: ' + NUM_TXT + '.']);
+               'Atendemos de segunda a sexta, das 9h às 18h. Você pode continuar a conversa direto pelo nosso WhatsApp: ' + NUM_TXT + '.']);
     const a = document.createElement('a'); a.className = 'chat-go'; a.target = '_blank'; a.rel = 'noopener';
     a.href = 'https://wa.me/' + NUM + '?text=' + encodeURIComponent('Olá! Vim pelo site da Votrix Contabilidade e quero falar sobre: ' + t + '.');
     a.textContent = 'Continuar no WhatsApp'; foot.appendChild(a);
